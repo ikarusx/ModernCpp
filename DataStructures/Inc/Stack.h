@@ -19,7 +19,7 @@ public:
 	Stack& operator=(const Stack& other);
 	Stack& operator=(Stack&& other) noexcept;
 
-	~Stack();
+	~Stack() noexcept;
 
 	void Push(const T& val);
 	T Top();
@@ -37,7 +37,7 @@ private:
 
 #pragma region ConstructDestruct
 template<class T>
-Stack<T>::Stack()
+Stack<T>::Stack() noexcept
 {
 }
 
@@ -92,7 +92,7 @@ Stack<T>& Stack<T>::operator=(Stack&& other) noexcept
 }
 
 template<class T>
-Stack<T>::~Stack()
+Stack<T>::~Stack() noexcept
 {
 }
 #pragma endregion
@@ -111,13 +111,21 @@ void Stack<T>::Push(const T& val)
 template<class T>
 T Stack<T>::Top()
 {
-
+	if (mCurrentIndex > 0)
+	{
+		return mData[mCurrentIndex - 1];
+	}
+	
+	return T{};
 }
 
 template<class T>
 void Stack<T>::Pop()
 {
-
+	if (mCurrentIndex > 0)
+	{
+		--mCurrentIndex;
+	}
 }
 
 template<class T>
