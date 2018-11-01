@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithms", "Algorithms\Algorithms.vcxproj", "{3775619D-FDB3-4331-AB85-996116106681}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{6B356EFC-E0E9-488E-B4F0-5CFE355AA3C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{99F9D302-E317-4E7C-9011-656C3295A0B6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlgorithmsTests", "AlgorithmsTests\AlgorithmsTests.vcxproj", "{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructures", "DataStructures\DataStructures.vcxproj", "{48544086-719F-4E1E-B773-A58D83FDCD6A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructuresTests", "DataStructuresTests\DataStructuresTests.vcxproj", "{71450D3B-154B-4E99-93D5-35529EC64616}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3775619D-FDB3-4331-AB85-996116106681}.Debug|x64.ActiveCfg = Debug|x64
+		{3775619D-FDB3-4331-AB85-996116106681}.Debug|x64.Build.0 = Debug|x64
+		{3775619D-FDB3-4331-AB85-996116106681}.Debug|x86.ActiveCfg = Debug|Win32
+		{3775619D-FDB3-4331-AB85-996116106681}.Debug|x86.Build.0 = Debug|Win32
+		{3775619D-FDB3-4331-AB85-996116106681}.Release|x64.ActiveCfg = Release|x64
+		{3775619D-FDB3-4331-AB85-996116106681}.Release|x64.Build.0 = Release|x64
+		{3775619D-FDB3-4331-AB85-996116106681}.Release|x86.ActiveCfg = Release|Win32
+		{3775619D-FDB3-4331-AB85-996116106681}.Release|x86.Build.0 = Release|Win32
+		{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1}.Debug|x64.ActiveCfg = Debug|x64
+		{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1}.Debug|x64.Build.0 = Debug|x64
+		{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1}.Debug|x86.ActiveCfg = Debug|Win32
+		{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1}.Debug|x86.Build.0 = Debug|Win32
+		{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1}.Release|x64.ActiveCfg = Release|x64
+		{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1}.Release|x64.Build.0 = Release|x64
+		{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1}.Release|x86.ActiveCfg = Release|Win32
+		{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1}.Release|x86.Build.0 = Release|Win32
+		{48544086-719F-4E1E-B773-A58D83FDCD6A}.Debug|x64.ActiveCfg = Debug|x64
+		{48544086-719F-4E1E-B773-A58D83FDCD6A}.Debug|x64.Build.0 = Debug|x64
+		{48544086-719F-4E1E-B773-A58D83FDCD6A}.Debug|x86.ActiveCfg = Debug|Win32
+		{48544086-719F-4E1E-B773-A58D83FDCD6A}.Debug|x86.Build.0 = Debug|Win32
+		{48544086-719F-4E1E-B773-A58D83FDCD6A}.Release|x64.ActiveCfg = Release|x64
+		{48544086-719F-4E1E-B773-A58D83FDCD6A}.Release|x64.Build.0 = Release|x64
+		{48544086-719F-4E1E-B773-A58D83FDCD6A}.Release|x86.ActiveCfg = Release|Win32
+		{48544086-719F-4E1E-B773-A58D83FDCD6A}.Release|x86.Build.0 = Release|Win32
+		{71450D3B-154B-4E99-93D5-35529EC64616}.Debug|x64.ActiveCfg = Debug|x64
+		{71450D3B-154B-4E99-93D5-35529EC64616}.Debug|x64.Build.0 = Debug|x64
+		{71450D3B-154B-4E99-93D5-35529EC64616}.Debug|x86.ActiveCfg = Debug|Win32
+		{71450D3B-154B-4E99-93D5-35529EC64616}.Debug|x86.Build.0 = Debug|Win32
+		{71450D3B-154B-4E99-93D5-35529EC64616}.Release|x64.ActiveCfg = Release|x64
+		{71450D3B-154B-4E99-93D5-35529EC64616}.Release|x64.Build.0 = Release|x64
+		{71450D3B-154B-4E99-93D5-35529EC64616}.Release|x86.ActiveCfg = Release|Win32
+		{71450D3B-154B-4E99-93D5-35529EC64616}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3775619D-FDB3-4331-AB85-996116106681} = {6B356EFC-E0E9-488E-B4F0-5CFE355AA3C3}
+		{BFA9B87A-350C-4F06-AD9C-0CB4F783E1E1} = {99F9D302-E317-4E7C-9011-656C3295A0B6}
+		{48544086-719F-4E1E-B773-A58D83FDCD6A} = {6B356EFC-E0E9-488E-B4F0-5CFE355AA3C3}
+		{71450D3B-154B-4E99-93D5-35529EC64616} = {99F9D302-E317-4E7C-9011-656C3295A0B6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FDDD9EE-CA2A-4C63-837B-BD3AB0D22AC1}
+	EndGlobalSection
+EndGlobal
