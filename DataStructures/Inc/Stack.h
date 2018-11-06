@@ -25,6 +25,8 @@ public:
 	T Top();
 	void Pop();
 
+	size_t Size() { return mCurrentIndex; }
+
 private:
 	void Grow();
 
@@ -71,6 +73,11 @@ Stack<T>::Stack(Stack&& other) noexcept
 template<class T>
 Stack<T>& Stack<T>::operator=(const Stack& other)
 {
+	if (other == *this)
+	{
+		return;
+	}
+
 	mData.release();
 	mData = std::make_unique<T[]>(other.mCapacity);
 	mCapacity = other.mCapacity;
@@ -94,6 +101,7 @@ Stack<T>& Stack<T>::operator=(Stack&& other) noexcept
 template<class T>
 Stack<T>::~Stack() noexcept
 {
+	mData.release();
 }
 #pragma endregion
 
@@ -111,12 +119,9 @@ void Stack<T>::Push(const T& val)
 template<class T>
 T Stack<T>::Top()
 {
-	if (mCurrentIndex > 0)
-	{
-		return mData[mCurrentIndex - 1];
-	}
-	
-	return T{};
+	static_assert(mCapacity > 0, "[Stack::Top] No elements in the stack!");
+
+	return mData[mCurrentIndex - 1];
 }
 
 template<class T>
@@ -131,11 +136,19 @@ void Stack<T>::Pop()
 template<class T>
 void Stack<T>::Grow()
 {
-	mCapacity = mCapacity != 0 ? mCapacity << 1 : 2;
-	std::unique_ptr<T[]> temp = std::make_unique<T[]>(mCapacity);
+	if (mCapacity == 0)
+	{
+		mCapacity = 2;
+		mData = std::make_unique<T[]>(mCapacity);
+	}
+	else
+	{
+		mCapacity = mCapacity << 1;
+		std::unique_ptr<T[]> temp = std::make_unique<T[]>(mCapacity);
 
-	std::copy(mData.get(), mData.get() + mCapacity, temp.get());
-	mData.swap(temp);
+		std::copy(mData.get(), mData.get() + mCapacity, temp.get());
+		mData.swap(temp);
+	}
 }
 
 #endif //_STACK_H_GUARD_
