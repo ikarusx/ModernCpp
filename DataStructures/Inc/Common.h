@@ -1,8 +1,8 @@
 
-#ifndef _COMMON_H_GUARD_
-#define _COMMON_H_GUARD_
+#ifndef _DATASTRUCTURES_COMMON_H_GUARD_
+#define _DATASTRUCTURES_COMMON_H_GUARD_
 
 #include <algorithm>
 #include <memory>
 
-#endif // !_COMMON_H_GUARD_
+#endif // !_DATASTRUCTURES_COMMON_H_GUARD_

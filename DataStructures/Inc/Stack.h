@@ -119,7 +119,7 @@ void Stack<T>::Push(const T& val)
 template<class T>
 T Stack<T>::Top()
 {
-	static_assert(mCapacity > 0, "[Stack::Top] No elements in the stack!");
+	//static_assert(mCapacity > 0, "[Stack::Top] No elements in the stack!");
 
 	return mData[mCurrentIndex - 1];
 }
