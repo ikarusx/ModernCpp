@@ -147,10 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Inc\Common.h" />
-    <ClInclude Include="Inc\DataStructures.h" />
-    <ClInclude Include="Inc\Stack.h" />
-    <ClInclude Include="Src\Precompiled.h" />
+    <ClInclude Include="Inc\Common.hpp" />
+    <ClInclude Include="Inc\DataStructures.hpp" />
+    <ClInclude Include="Inc\Stack.hpp" />
+    <ClInclude Include="Src\Precompiled.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiled.cpp">

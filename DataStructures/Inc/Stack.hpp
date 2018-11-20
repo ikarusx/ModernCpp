@@ -1,6 +1,6 @@
 
-#ifndef _STACK_H_GUARD_
-#define _STACK_H_GUARD_
+#ifndef _STACK_HPP_GUARD_
+#define _STACK_HPP_GUARD_
 
 #include <memory>
 //#include <algorithm>
@@ -151,4 +151,4 @@ void Stack<T>::Grow()
 	}
 }
 
-#endif //_STACK_H_GUARD_
+#endif //_STACK_HPP_GUARD_

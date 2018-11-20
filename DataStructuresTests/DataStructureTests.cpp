@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 
-#include <DataStructures/Inc/Stack.h>
+#include <DataStructures/Inc/Stack.hpp>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

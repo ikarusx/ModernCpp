@@ -9,16 +9,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Inc\Stack.h">
+    <ClInclude Include="Inc\Common.hpp">
       <Filter>Inc</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\DataStructures.h">
+    <ClInclude Include="Inc\DataStructures.hpp">
       <Filter>Inc</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\Common.h">
+    <ClInclude Include="Inc\Stack.hpp">
       <Filter>Inc</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Precompiled.h">
+    <ClInclude Include="Src\Precompiled.hpp">
       <Filter>Src</Filter>
     </ClInclude>
   </ItemGroup>
