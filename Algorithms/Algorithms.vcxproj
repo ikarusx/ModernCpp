@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Inc\Common.h" />
-    <ClInclude Include="Inc\Algorithms.h" />
-    <ClInclude Include="Inc\CString.h" />
-    <ClInclude Include="Src\Precompiled.h" />
+    <ClInclude Include="Inc\Common.hpp" />
+    <ClInclude Include="Inc\Algorithms.hpp" />
+    <ClInclude Include="Inc\CString.hpp" />
+    <ClInclude Include="Src\Precompiled.hpp" />
+    <ClInclude Include="Inc\String.hpp" />
+    <ClInclude Include="Src\String.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\CString.cpp" />

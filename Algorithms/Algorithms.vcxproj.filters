@@ -9,17 +9,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Inc\Common.h">
+    <ClInclude Include="Src\String.cpp" />
+    <ClInclude Include="Inc\String.hpp">
       <Filter>Inc</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Precompiled.h">
+    <ClInclude Include="Inc\CString.hpp">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Common.hpp">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Algorithms.hpp">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Precompiled.hpp">
       <Filter>Src</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\Algorithms.h">
-      <Filter>Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\CString.h">
-      <Filter>Inc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
