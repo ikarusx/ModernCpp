@@ -21,6 +21,7 @@
     <ClInclude Include="Src\Precompiled.hpp">
       <Filter>Src</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\SinglyLinkedList.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiled.cpp">

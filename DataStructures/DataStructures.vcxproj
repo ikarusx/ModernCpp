@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Inc\Common.hpp" />
     <ClInclude Include="Inc\DataStructures.hpp" />
+    <ClInclude Include="Inc\SinglyLinkedList.hpp" />
     <ClInclude Include="Inc\Stack.hpp" />
     <ClInclude Include="Src\Precompiled.hpp" />
   </ItemGroup>
