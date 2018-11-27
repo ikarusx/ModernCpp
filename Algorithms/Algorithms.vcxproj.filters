@@ -9,7 +9,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\String.cpp" />
     <ClInclude Include="Inc\String.hpp">
       <Filter>Inc</Filter>
     </ClInclude>
@@ -23,6 +22,9 @@
       <Filter>Inc</Filter>
     </ClInclude>
     <ClInclude Include="Src\Precompiled.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\String.cpp">
       <Filter>Src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -50,9 +50,9 @@ public:
 	T& emplace_front(Args&&... args);
 
 private:
-	std::unique_ptr<Node> head{ nullptr };
-	Node* tail{ nullptr };
-	size_t size{ 0 };
+	std::unique_ptr<Node> mHead{ nullptr };
+	Node* mTail{ nullptr };
+	size_t mSize{ 0 };
 
 };
 
@@ -60,7 +60,7 @@ private:
 // Rule of six:
 template<typename T>
 SinglyLinkedList<T>::SinglyLinkedList(const SinglyLinkedList& other)
-	: head{ std::make_unique<Node>(other.head) }
+	: mHead{ std::make_unique<Node>(other.mHead) }
 {
 	for (int i = 0; i < other.size(); ++i)
 	{
@@ -69,8 +69,8 @@ SinglyLinkedList<T>::SinglyLinkedList(const SinglyLinkedList& other)
 }
 template<typename T>
 SinglyLinkedList<T>::SinglyLinkedList(SinglyLinkedList&& other) noexcept
-	: tail{ other.tail }
-	, head{ std::move(other.head) }
+	: mTail{ other.mTail }
+	, mHead{ std::move(other.mHead) }
 {
 }
 template<typename T>
@@ -97,29 +97,29 @@ size_t SinglyLinkedList<T>::size() const
 template<typename T>
 void SinglyLinkedList<T>::push_back(const T& data)
 {
-	if (tail != nullptr)
+	if (mTail != nullptr)
 	{
-		tail->next = std::make_unique<Node>(data, nullptr);
-		tail = tail->next.get();
+		mTail->next = std::make_unique<Node>(data, nullptr);
+		mTail = mTail->next.get();
 	}
 	else
 	{
-		head = std::make_unique<Node>(data, nullptr);
-		tail = head.get();
+		mHead = std::make_unique<Node>(data, nullptr);
+		mTail = mHead.get();
 	}
 }
 template<typename T>
 void SinglyLinkedList<T>::push_back(T&& data)
 {
-	if (tail != nullptr)
+	if (mTail != nullptr)
 	{
-		tail->next = std::make_unique<Node>(std::move(data), nullptr);
-		tail = tail->next.get();
+		mTail->next = std::make_unique<Node>(std::move(data), nullptr);
+		mTail = mTail->next.get();
 	}
 	else
 	{
-		head = std::make_unique<Node>(std::move(data), nullptr);
-		tail = head.get();
+		mHead = std::make_unique<Node>(std::move(data), nullptr);
+		mTail = mHead.get();
 	}
 }
 template<typename T>
