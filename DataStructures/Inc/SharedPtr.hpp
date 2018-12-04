@@ -14,39 +14,46 @@ public:
 	constexpr SharedPtr() noexcept {}
 	constexpr SharedPtr(std::nullptr_t) noexcept {}
 	template<typename U, typename = typename std::enable_if<std::is_convertible<U*, T*>::value>::type>
-	explicit SharedPtr(U* ptr);
+	inline explicit SharedPtr(U* ptr) noexcept;
 	template<typename U, typename Deleter, typename = typename std::enable_if<std::is_convertible<U*, T*>::value>::type>
-	SharedPtr(U* ptr, Deleter d);
+	inline SharedPtr(U* ptr, Deleter d) noexcept;
 	template<typename U, typename Deleter, typename = typename std::enable_if<std::is_convertible<U*, T*>::value>::type>
-	SharedPtr(std::nullptr_t ptr, Deleter d);
+	inline SharedPtr(std::nullptr_t ptr, Deleter d) noexcept;
 
 	// Rule of six:
-	SharedPtr(const SharedPtr& other);
-	SharedPtr(SharedPtr&& other) noexcept;
+	inline SharedPtr(const SharedPtr& other) noexcept;
+	inline SharedPtr(SharedPtr&& other) noexcept;
 
-	SharedPtr& operator=(const SharedPtr& other);
-	SharedPtr& operator=(SharedPtr&& other) noexcept;
+	inline SharedPtr& operator=(const SharedPtr& other) noexcept;
+	inline SharedPtr& operator=(SharedPtr&& other) noexcept;
 
-	~SharedPtr() noexcept;
+	inline ~SharedPtr() noexcept;
 
-	T* Get() { return mData; }
-	T& operator*() {}
+	inline T* Get() noexcept { return mData; }
+	inline T* Get() const noexcept { return mData; }
+	inline T& operator*() const noexcept { return (*Get()); }
+	inline T* operator->() const noexcept { return Get(); }
 
-	void Swap(SharedPtr& sptr) noexcept;
+	inline void Swap(SharedPtr& sptr) noexcept;
 	
-	void reset() noexcept;
+	inline void reset() noexcept;
 	template<typename U>
-	void reset(U* ptr);
+	inline void reset(U* ptr) noexcept;
 	template<typename U, typename Deleter>
-	void reset(U* ptr, Deleter d);
+	inline void reset(U* ptr, Deleter d) noexcept;
 	template<typename U, typename Deleter, typename Alloc>
-	void reset(U* ptr, Deleter d, Alloc alloc);
+	inline void reset(U* ptr, Deleter d, Alloc alloc) noexcept;
 
 private:
+	inline void IncrementRef() { ++mUseCount; }
+
+	using DeleterType = void(T*);
+
 	T* mData{ nullptr };
-	size_t mCount{ 0 };
+	size_t mUseCount{ 0 };
+	size_t mWeakCount{ 0 };
 	// TODO: test this later.
-	std::function<void(T*)> mDeleter{ [](T* ptr) {
+	std::function<DeleterType> mDeleter{ [](T* ptr) {
 		if constexpr (!std::is_array<T>::value) delete ptr;
 		else delete[] ptr;
 	} };
@@ -55,47 +62,60 @@ private:
 #pragma region ConstructDestruct
 template<typename T>
 template<typename U, typename>
-SharedPtr<T>::SharedPtr(U* ptr)
+inline SharedPtr<T>::SharedPtr(U* ptr) noexcept
 	: mData{ (T*)ptr }
 {
 }
 template<typename T>
 template<typename U, typename Deleter, typename>
-SharedPtr<T>::SharedPtr(U* ptr, Deleter d)
-	: mData{ (T*)ptr }
+inline SharedPtr<T>::SharedPtr(U* ptr, Deleter d) noexcept
+	: mData{ static_cast<T*>(ptr) }
+	, mDeleter{ std::move(d) }
 {
 }
 template<typename T>
 template<typename U, typename Deleter, typename>
-SharedPtr<T>::SharedPtr(std::nullptr_t ptr, Deleter d)
+inline SharedPtr<T>::SharedPtr(std::nullptr_t ptr, Deleter d) noexcept
+	: mDeleter{ std::move(d) }
 {
 }
 
 // Rule of six:
 template<typename T>
-SharedPtr<T>::SharedPtr(const SharedPtr<T>& other)
+inline SharedPtr<T>::SharedPtr(const SharedPtr<T>& other) noexcept
+	: mData{ other.Get() }
+	, mUseCount{ other.mUseCount + 1 }
+	, mWeakCount{ other.mWeakCount }
 {
-
+	const_cast<SharedPtr<T>&>(other).IncrementRef();
 }
 template<typename T>
-SharedPtr<T>::SharedPtr(SharedPtr<T>&& other) noexcept
+inline SharedPtr<T>::SharedPtr(SharedPtr<T>&& other) noexcept
+	: mData{ std::forward<T*>(other.mData) }
+	, mUseCount{ other.mUseCount }
+	, mWeakCount{ other.mWeakCount }
 {
-
-}
-
-template<typename T>
-SharedPtr<T>& SharedPtr<T>::operator=(const SharedPtr<T>& other)
-{
-
-}
-template<typename T>
-SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>&& other) noexcept
-{
-
 }
 
 template<typename T>
-SharedPtr<T>::~SharedPtr() noexcept
+inline SharedPtr<T>& SharedPtr<T>::operator=(const SharedPtr<T>& other) noexcept
+{
+	if (&other != this)
+	{
+
+	}
+}
+template<typename T>
+inline SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>&& other) noexcept
+{
+	if (&other != this)
+	{
+		
+	}
+}
+
+template<typename T>
+inline SharedPtr<T>::~SharedPtr() noexcept
 {
 	if (mData != nullptr)
 	{

@@ -86,5 +86,28 @@ namespace DataStructuresTests
 			Assert::AreNotEqual(*ip, 5);
 		}
 
+		TEST_METHOD(DeleterConstruction)
+		{
+			int* ip{ new int{ 5 } };
+			{
+				SharedPtr<int> mySharedPtr{ ip, [](int* ptr) { delete ptr; } };
+
+				Assert::IsNotNull(mySharedPtr.Get());
+				Assert::IsNotNull(ip);
+			}
+			Assert::AreNotEqual(*ip, 5);
+
+			std::shared_ptr<int> test1;
+			std::shared_ptr<int> test2{ test1 };
+			std::shared_ptr<int> test3{ std::make_shared<int>(10) };
+
+			test2.swap(test3);
+
+			Assert::IsFalse((bool)test1);
+			Assert::IsTrue((bool)test2);
+			Assert::IsFalse((bool)test3);
+			Assert::AreEqual(test1.use_count(), test3.use_count());
+		}
+
 	};
 }
